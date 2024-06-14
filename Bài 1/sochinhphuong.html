@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Nhập vào hai số a và b</h1>
+    <div>a:<input type="text" id="a" placeholder="Nhập số a"></div>
+    <div>b:<input type="text" id="b" placeholder="Nhập số b"></div>
+    <button onclick="hienthisochinhphuong()">Hiện số chính phương</button>
+    <h1 id="Content"></h1>
+    <div id="danhSachSoChinhPhuong"></div>
+<Script>
+    function hienthisochinhphuong(){
+    var a = parseInt(document.getElementById('a').value)
+    var b = parseInt(document.getElementById('b').value)
+    var arraySoChinhPhuong = []
+    if (!isNaN(a) && !isNaN(b)) {
+        if (Number.isInteger(a) && a > 0 && Number.isInteger(b) && b > 0) {
+            if (b > a){
+                    for( let i = a; i < b; i++ ){
+                        if (Math.sqrt(i) % 1 === 0){
+                            arraySoChinhPhuong.push(i)
+                        }
+                    }
+            }else{
+                alert("Vui lòng nhập số a nhỏ hơn số b !!!")
+            }
+        } else {
+            alert('Vui lòng nhập vào một số nguyên dương !!');
+            }
+    
+        } else {
+            alert("vui lòng nhập số !!!")
+        }
+    if (arraySoChinhPhuong.length > 0) {
+            var content = document.getElementById("Content")
+            content.textContent = "Các số chính phương trong khoảng từ " + a +" đến " + b
+            var list = document.getElementById("danhSachSoChinhPhuong")
+            for (var i = 0; i < arraySoChinhPhuong.length; i++) {
+   
+                     var span = document.createElement("span");
+                      span.textContent = arraySoChinhPhuong[i] + " ";
+                        list.appendChild(span);
+                        }
+
+        }else{
+            alert("Không có số chính phương giữa " + a + " và " + b)
+        }
+
+    return console.log(arraySoChinhPhuong)
+    }
+</Script>
+</body>
+</html>
