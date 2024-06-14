@@ -14,13 +14,20 @@
     <div id="danhSachSoChinhPhuong"></div>
 <Script>
     function hienthisochinhphuong(){
+    
+        var resetContent = document.getElementById("Content")
+        resetContent.textContent =""
+        var resetList = document.getElementById("danhSachSoChinhPhuong")
+        resetList.textContent = ""
+        resetList.innerHTML = resetList.innerHTML.replace("span", "")
+
     var a = parseInt(document.getElementById('a').value)
     var b = parseInt(document.getElementById('b').value)
     var arraySoChinhPhuong = []
     if (!isNaN(a) && !isNaN(b)) {
         if (Number.isInteger(a) && a > 0 && Number.isInteger(b) && b > 0) {
             if (b > a){
-                    for( let i = a; i < b; i++ ){
+                    for( let i = a; i <= b; i++ ){
                         if (Math.sqrt(i) % 1 === 0){
                             arraySoChinhPhuong.push(i)
                         }
