@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bộ chọn màu</h1>
+        <span id="colorDisplay" class="color-display"> </span>
+        <div>
+        <button id="generateColorButton" onclick="generateRandomColor()">Màu ngẫu nhiên</button>
+        <button id="copyColorButton" onclick="copyColor()">Copy Color</button>
+        <input type="color" id="gradientColorPicker" onchange="changeGradientColor()">
+        </div>
+    </div>
+    <script>
+        function generateRandomColor() {
+            var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16); 
+            document.getElementById("colorDisplay").style.backgroundColor = randomColor; 
+            document.getElementById("colorDisplay").textContent = randomColor; // Hiển thị mã màu hex
+        }
+
+        function copyColor() {
+            var colorToCopy = document.getElementById("colorDisplay").textContent; // Lấy mã màu hex
+            navigator.clipboard.writeText(colorToCopy); // Sao chép mã màu vào clipboard
+            alert("Color copied to clipboard: " + colorToCopy);
+        }
+
+        function changeGradientColor() {
+            var gradientColor = document.getElementById("gradientColorPicker").value; // Lấy màu gradient từ input type=color
+            document.body.style.background = "linear-gradient(to right, " + gradientColor + ", #ffffff)"; // Thiết lập background gradient
+        }
+
+    </script>
+</body>
+</html>
